@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Site Admin Notifications
-Description: Allow vanilla site admins to add news users and not send a notification email. 
+Description: Restore the send email notification option on the add users page for site admins.
 Author: _FindingSimple
 Author URI: http://findingsimple.com/
 Version: 0.1
@@ -19,13 +19,12 @@ function sac_spoof_super_admin( $admins ){
 
 	if( $pagenow == 'user-new.php' ){
 		$stacktrace = array_pop( debug_backtrace() );
-		if( strpos( $stacktrace[ 'file' ], 'user-new.php' ) && in_array( $stacktrace[ 'line' ], array( 335, 251 ) ) && $stacktrace[ 'function' ] == 'is_super_admin' ){
+		if( strpos( $stacktrace[ 'file' ], 'user-new.php' ) && in_array( $stacktrace[ 'line' ], array( 335, 251, 69, 115, 111 ) ) && $stacktrace[ 'function' ] == 'is_super_admin' ){
 			$all_admins = array();
 			foreach( get_users( array( 'role' => 'administrator' ) ) as $user )
 				array_push( $all_admins, $user->user_login );
 			$admins = array_merge( $admins, $all_admins );
 			$admins = array_unique( $admins );
-			error_log( 'admins = ' . print_r( $admins, true ) );
 		}
 	}
 	return $admins;
