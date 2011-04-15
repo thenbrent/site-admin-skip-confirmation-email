@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Site Admin Notifications
-Description: Restore the send email notification option on the add users page for site admins.
+Plugin Name: Site Admin Skip Email Confirmation
+Description: Restore the skip email notification option on the add users page for site admins.
 Author: _FindingSimple
 Author URI: http://findingsimple.com/
 Version: 0.1
