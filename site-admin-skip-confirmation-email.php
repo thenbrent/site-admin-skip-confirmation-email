@@ -18,8 +18,12 @@ function sac_spoof_super_admin( $admins ){
 	global $pagenow;
 
 	if( $pagenow == 'user-new.php' ){
+		// Get the details of the calling function
 		$stacktrace = array_pop( debug_backtrace() );
+
+		// If calling function was a 'is_super_admin' call from specific poings in the user-new.php file
 		if( strpos( $stacktrace[ 'file' ], 'user-new.php' ) && in_array( $stacktrace[ 'line' ], array( 335, 251, 69, 115, 111 ) ) && $stacktrace[ 'function' ] == 'is_super_admin' ){
+			// Add site admins to the super admin array
 			$all_admins = array();
 			foreach( get_users( array( 'role' => 'administrator' ) ) as $user )
 				array_push( $all_admins, $user->user_login );
