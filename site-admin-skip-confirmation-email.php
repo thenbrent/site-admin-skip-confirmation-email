@@ -21,7 +21,7 @@ function sac_spoof_super_admin( $admins ){
 		// Get the details of the calling function
 		$stacktrace = array_pop( debug_backtrace() );
 
-		// If calling function was a 'is_super_admin' call from specific poings in the user-new.php file
+		// If calling function was a 'is_super_admin' call from specific points in the user-new.php file
 		if( strpos( $stacktrace[ 'file' ], 'user-new.php' ) && in_array( $stacktrace[ 'line' ], array( 335, 251, 69, 115, 111 ) ) && $stacktrace[ 'function' ] == 'is_super_admin' ){
 			// Add site admins to the super admin array
 			$all_admins = array();
